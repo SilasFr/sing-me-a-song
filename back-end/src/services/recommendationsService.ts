@@ -1,6 +1,12 @@
-import { Recommendation } from "@prisma/client";
-import { recommendationRepository } from "../repositories/recommendationRepository.js";
-import { notFoundError } from "../utils/errorUtils.js";
+import {
+ recommendationRepository 
+} from "../repositories/recommendationRepository.js";
+import {
+ notFoundError 
+} from "../utils/errorUtils.js";
+import {
+ Recommendation 
+} from "@prisma/client";
 
 export type CreateRecommendationData = Omit<Recommendation, "id" | "score">;
 
