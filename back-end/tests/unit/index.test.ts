@@ -36,4 +36,15 @@ describe('service unit tests', () => {
       .mockResolvedValue(recommendation);
     jest.spyOn(recommendationRepository, 'updateScore').mockResolvedValue(null);
   });
+
+  it('should get random recommendation', async () => {
+    const recommendation = await recommendationFatory.getRecommendation();
+    jest
+      .spyOn(recommendationRepository, 'findAll')
+      .mockResolvedValue([recommendation]);
+
+    const result = await recommendationService.getByScore('gt');
+
+    expect(result).toEqual([recommendation]);
+  });
 });
